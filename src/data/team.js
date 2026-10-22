@@ -19,8 +19,8 @@ export const team = {
     reflection: '',
   },
   jugadores: {
-    name: '[Nombre del estudiante 4]',
-    reflection: '',
+    name: 'Aayush Gupta',
+    reflection: `Me empezó a gustar el fútbol después de venir a VIT, cuando un amigo me enseñó vídeos de partidos. Después, también vi la Copa del Mundo de este año. Me gustó mucho ver los partidos. Aprendí que el fútbol es muy importante en España. Los jugadores españoles son muy buenos y trabajan mucho. En la India, el críquet es muy popular, como el fútbol en España. Me sentí feliz y quiero aprender más sobre este deporte.`,
   },
   aficionados: {
     name: 'L S Rahul Subramanian',
