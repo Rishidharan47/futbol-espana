@@ -20,10 +20,10 @@ export const images = {
     creditUrl: '',
   },
   historia: {
-    src: '',
-    alt: 'Balón de cuero antiguo sobre un campo de tierra, símbolo de los primeros años del fútbol en España',
+    src: 'images/historia-hero.jpg',
+    alt: 'Minas de Riotinto en Huelva (1889): trabajadores británicos y vecinos españoles jugando al fútbol',
     scene: 'vintage',
-    credit: '',
+    credit: 'Generado y documentado para la sección de Historia por Sabarri Thentral Murugesan',
     creditUrl: '',
   },
   clubes: {

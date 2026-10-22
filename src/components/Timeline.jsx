@@ -47,7 +47,14 @@ export default function Timeline({ milestones }) {
                 </span>
                 <ChevronDown className="milestone-chevron" size={20} aria-hidden="true" />
               </button>
-              {open && <p className="milestone-detail">{m.detail}</p>}
+              {open && (
+                <div className="milestone-expand-body">
+                  {m.image && (
+                    <img src={m.image} alt={m.title} className="milestone-img" loading="lazy" />
+                  )}
+                  <p className="milestone-detail">{m.detail}</p>
+                </div>
+              )}
             </li>
           );
         })}

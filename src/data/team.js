@@ -7,8 +7,11 @@
 
 export const team = {
   historia: {
-    name: '[Nombre del estudiante 1]',
-    reflection: '',
+    name: 'Sabarri Thentral Murugesan',
+    reflection: `Aprendí mucho sobre la historia del fútbol en España con este proyecto. Al principio, yo pensaba que el fútbol siempre fue muy famoso en España, pero aprendí que comenzó en el año 1889 con trabajadores británicos en las minas de Huelva. Me sorprendió mucho saber que el club más antiguo de España se llama Recreativo de Huelva y que todavía existe hoy en día.
+También aprendí que el fútbol es una parte fundamental de la identidad y de la cultura española. No es solo un juego; une a las familias, a los amigos y a ciudades enteras. Ver cómo España ganó el Mundial de 2010 con el gol de Andrés Iniesta me pareció muy emocionante y bonito.
+Me gustó mucho investigar este tema porque como estudiante principiante de español, aprendí muchas palabras nuevas sobre el deporte, los estadios y la historia.
+En mi país, India, el críquet es el deporte más grande y popular. Cuando hay un partido importante de críquet, millones de personas ven la televisión juntos, exactamente igual que ocurre en España durante los partidos de fútbol. Los dos deportes demuestran que el esfuerzo, la pasión y el trabajo en equipo unen a las personas y crean alegría.`,
   },
   clubes: {
     name: '[Nombre del estudiante 2]',
