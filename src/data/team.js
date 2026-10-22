@@ -15,8 +15,8 @@ export const team = {
     reflection: `El fútbol es muy popular en España. Me gusta el fútbol. Cuando era niño, jugaba al fútbol con mi hermano y veía partidos de la Copa del Mundo. Ahora estudio español en la universidad. Me gusta aprender español porque puedo aprender sobre España y su cultura. Me gusta aprender sobre los clubes y los estadios. En India, el cricket también es muy popular. Muchas personas ven partidos de cricket y apoyan a sus equipos. ¡Me gusta aprender sobre el deporte en España!`,
   },
   clasico: {
-    name: '[Nombre del estudiante 3]',
-    reflection: '',
+    name: 'Rishidharan K',
+    reflection: `Antes de este proyecto, solo sabía que El Clásico era un partido muy famoso. Ahora sé que es mucho más que un partido. Lo que más me sorprendió fue que en 2005 los aficionados del Real Madrid aplaudieron a Ronaldinho, un jugador del Barça. Aprendí que la rivalidad entre Madrid y Barcelona también tiene una historia social y cultural, y que el Barça dice que es «més que un club». Me sentí muy interesado al investigar este tema. En la India tenemos algo parecido: cuando India juega contra Pakistán en el críquet, todo el país mira el partido. Para mí, la lección más importante es que puedes apoyar a tu equipo con pasión y también respetar al rival.`,
   },
   jugadores: {
     name: 'Aayush Gupta',
