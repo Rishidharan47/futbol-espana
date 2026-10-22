@@ -11,8 +11,8 @@ export const team = {
     reflection: '',
   },
   clubes: {
-    name: '[Nombre del estudiante 2]',
-    reflection: '',
+    name: 'Aryan Dev Aatrey',
+    reflection: `El fútbol es muy popular en España. Me gusta el fútbol. Cuando era niño, jugaba al fútbol con mi hermano y veía partidos de la Copa del Mundo. Ahora estudio español en la universidad. Me gusta aprender español porque puedo aprender sobre España y su cultura. Me gusta aprender sobre los clubes y los estadios. En India, el cricket también es muy popular. Muchas personas ven partidos de cricket y apoyan a sus equipos. ¡Me gusta aprender sobre el deporte en España!`,
   },
   clasico: {
     name: '[Nombre del estudiante 3]',
