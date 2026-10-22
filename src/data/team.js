@@ -23,8 +23,11 @@ export const team = {
     reflection: '',
   },
   aficionados: {
-    name: '[Nombre del estudiante 5]',
-    reflection: '',
+    name: 'L S Rahul Subramanian',
+    reflection: `Aprendí mucho sobre la cultura del fútbol en España. Lo que más me sorprendió fue que los aficionados cantan canciones, llevan banderas y animan a sus equipos durante los partidos. También me sorprendió que algunos aficionados viajan a otras ciudades para ver los partidos.
+Aprendí que el fútbol es una parte importante de la vida en España. Une a las personas y crea amistad, alegría y emoción. Los aficionados celebran las victorias y también apoyan a sus equipos cuando pierden.
+Me gustó investigar este tema porque descubrí muchas cosas nuevas sobre España. También fue interesante conocer las tradiciones de los aficionados y su amor por el fútbol.
+En mi país, India, el críquet es uno de los deportes más populares. Muchas personas ven los partidos en casa o con amigos y familiares. Al igual que en España, los aficionados apoyan a sus equipos y celebran sus victorias. A mí me gustan mucho tanto el fútbol como el críquet porque son deportes emocionantes que unen a las personas y enseñan el respeto y el trabajo en equipo.`,
   },
 };
 

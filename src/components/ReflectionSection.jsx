@@ -19,7 +19,14 @@ export default function ReflectionSection({ student, reflection }) {
         </h2>
 
         {reflection ? (
-          <p className="reflection-text">{reflection}</p>
+          <div className="reflection-text">
+            {reflection
+              .split('\n')
+              .filter((p) => p.trim())
+              .map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+          </div>
         ) : (
           <div className="reflection-placeholder">
             <p>[El estudiante escribirá un párrafo original sobre lo que aprendió o sintió.]</p>

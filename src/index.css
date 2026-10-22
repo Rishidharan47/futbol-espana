@@ -1003,6 +1003,7 @@ main:focus { outline: none; }
 .reflection-title { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 400; font-size: 32px; text-transform: uppercase; margin-bottom: var(--space-4); }
 .reflection-title svg { color: var(--red); }
 .reflection-text { font-size: 18px; }
+.reflection-text p + p { margin-top: var(--space-4); }
 .reflection-placeholder {
   padding: var(--space-5);
   border: 2px dashed var(--gold);
