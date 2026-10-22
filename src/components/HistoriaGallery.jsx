@@ -152,7 +152,7 @@ export default function HistoriaGallery() {
               <h3 className="gallery-modal-title">{selected.title}</h3>
               <p className="gallery-modal-desc">{selected.desc}</p>
               <div className="modal-footer-badge">
-                <Sparkles size={16} /> Momento histórico investigado por Sabarri Thentral Murugesan
+                <Sparkles size={16} /> Momento histórico investigado por Sabarri Thentral Murugesan (25BCE5404)
               </div>
             </div>
           </div>

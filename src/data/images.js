@@ -23,7 +23,7 @@ export const images = {
     src: 'images/historia-hero.jpg',
     alt: 'Minas de Riotinto en Huelva (1889): trabajadores británicos y vecinos españoles jugando al fútbol',
     scene: 'vintage',
-    credit: 'Generado y documentado para la sección de Historia por Sabarri Thentral Murugesan',
+    credit: '',
     creditUrl: '',
   },
   clubes: {
