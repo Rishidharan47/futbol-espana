@@ -1,0 +1,231 @@
+/* Shared styles for the interactive vocabulary tool (copied from Historia.css) */
+.gold-icon {
+  color: var(--gold);
+}
+
+/* =============================================================
+   4. VOCABULARY EXPLORER TOOL
+   ============================================================= */
+.vocab-tool {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  margin: var(--space-6) 0;
+}
+
+.vocab-tool-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: var(--space-4);
+}
+
+.vocab-tool-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--red);
+  background: rgba(198, 40, 40, 0.1);
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.vocab-tool-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  color: var(--navy);
+}
+
+.vocab-tool-lead {
+  font-size: 0.95rem;
+  color: var(--grey);
+  max-width: 600px;
+}
+
+.vocab-search-wrap {
+  position: relative;
+  min-width: 240px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--grey-light);
+}
+
+.vocab-search-input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.vocab-tool-body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-4);
+}
+
+.vocab-chips-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.vocab-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--offwhite);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.vocab-chip:hover {
+  background: var(--white);
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.vocab-chip.is-active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.chip-es {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.chip-en {
+  font-size: 0.72rem;
+  color: var(--grey);
+}
+
+.vocab-chip.is-active .chip-en {
+  color: var(--gold);
+}
+
+.vocab-spotlight-card {
+  background: #fbfbf9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.spotlight-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.spotlight-num {
+  font-size: 0.75rem;
+  color: var(--grey-light);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.spotlight-word {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 2px 0;
+}
+
+.spotlight-trans {
+  font-size: 0.95rem;
+  color: var(--grey);
+}
+
+.btn-audio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.btn-audio:hover {
+  background: #d97706;
+  color: var(--white);
+}
+
+.spotlight-example {
+  background: var(--white);
+  border-left: 3px solid var(--red);
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+
+.example-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+.example-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 2px;
+}
+
+.spotlight-hint {
+  font-size: 0.85rem;
+  color: var(--grey);
+}
+
+.hint-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--grey);
+  text-transform: uppercase;
+}
+
+.spotlight-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #1f7a46;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+@media (max-width: 840px) {
+  .vocab-tool-body {
+    grid-template-columns: 1fr;
+  }
+}

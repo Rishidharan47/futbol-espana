@@ -1,7 +1,7 @@
 import { Star, Compass, History, Globe } from 'lucide-react';
 import PageHeader from '../components/PageHeader.jsx';
 import Quiz from '../components/Quiz.jsx';
-import VocabList from '../components/VocabList.jsx';
+import VocabTool from '../components/VocabTool.jsx';
 import ReflectionSection from '../components/ReflectionSection.jsx';
 import { clasico } from '../data/clasico.js';
 import { team } from '../data/team.js';
@@ -115,7 +115,11 @@ export default function ElClasico() {
         </div>
       </section>
 
-      <VocabList words={clasico.vocab} />
+      <section className="section section-offwhite" id="vocabulario">
+        <div className="container">
+          <VocabTool vocab={clasico.vocab} details={clasico.vocabDetails} author="Rishidharan" />
+        </div>
+      </section>
       <ReflectionSection student={student.name} reflection={student.reflection} />
     </>
   );

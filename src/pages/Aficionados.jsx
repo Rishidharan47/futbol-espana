@@ -2,7 +2,7 @@ import { Users, Music, Flag, Volume2, Clock, Tv } from 'lucide-react';
 import PageHeader from '../components/PageHeader.jsx';
 import MatchDayJourney from '../components/MatchDayJourney.jsx';
 import ImageFrame from '../components/ImageFrame.jsx';
-import VocabList from '../components/VocabList.jsx';
+import VocabTool from '../components/VocabTool.jsx';
 import ReflectionSection from '../components/ReflectionSection.jsx';
 import { aficionados } from '../data/aficionados.js';
 import { team } from '../data/team.js';
@@ -65,7 +65,11 @@ export default function Aficionados() {
         </div>
       </section>
 
-      <VocabList words={aficionados.vocab} />
+      <section className="section section-offwhite" id="vocabulario">
+        <div className="container">
+          <VocabTool vocab={aficionados.vocab} details={aficionados.vocabDetails} author="Rahul" />
+        </div>
+      </section>
       <ReflectionSection student={student.name} reflection={student.reflection} />
     </>
   );
