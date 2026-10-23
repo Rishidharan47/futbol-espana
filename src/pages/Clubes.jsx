@@ -1,7 +1,7 @@
 import PageHeader from '../components/PageHeader.jsx';
 import ClubCard from '../components/ClubCard.jsx';
 import ImageFrame from '../components/ImageFrame.jsx';
-import VocabList from '../components/VocabList.jsx';
+import VocabTool from '../components/VocabTool.jsx';
 import ReflectionSection from '../components/ReflectionSection.jsx';
 import { clubes } from '../data/clubes.js';
 import { team } from '../data/team.js';
@@ -57,7 +57,11 @@ export default function Clubes() {
         </div>
       </section>
 
-      <VocabList words={clubes.vocab} />
+      <section className="section section-offwhite" id="vocabulario">
+        <div className="container">
+          <VocabTool vocab={clubes.vocab} details={clubes.vocabDetails} author="Aryan" />
+        </div>
+      </section>
       <ReflectionSection student={student.name} reflection={student.reflection} />
     </>
   );

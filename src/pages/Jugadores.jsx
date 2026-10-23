@@ -1,7 +1,7 @@
 import PageHeader from '../components/PageHeader.jsx';
 import PlayerCard from '../components/PlayerCard.jsx';
 import GuessPlayer from '../components/GuessPlayer.jsx';
-import VocabList from '../components/VocabList.jsx';
+import VocabTool from '../components/VocabTool.jsx';
 import ReflectionSection from '../components/ReflectionSection.jsx';
 import { jugadores } from '../data/jugadores.js';
 import { team } from '../data/team.js';
@@ -53,7 +53,11 @@ export default function Jugadores() {
         </div>
       </section>
 
-      <VocabList words={jugadores.vocab} />
+      <section className="section section-offwhite" id="vocabulario">
+        <div className="container">
+          <VocabTool vocab={jugadores.vocab} details={jugadores.vocabDetails} author="Aayush" />
+        </div>
+      </section>
       <ReflectionSection student={student.name} reflection={student.reflection} />
     </>
   );
