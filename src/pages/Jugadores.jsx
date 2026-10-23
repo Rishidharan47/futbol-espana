@@ -5,6 +5,7 @@ import VocabTool from '../components/VocabTool.jsx';
 import ReflectionSection from '../components/ReflectionSection.jsx';
 import { jugadores } from '../data/jugadores.js';
 import { team } from '../data/team.js';
+import { highlightSpanish } from '../components/SpanishText.jsx';
 
 export default function Jugadores() {
   const student = team.jugadores;
@@ -12,9 +13,9 @@ export default function Jugadores() {
     <>
       <PageHeader
         number="04"
-        kicker="Jugadores"
-        title="Jugadores Famosos del Fútbol Español"
-        subtitle="Los protagonistas de la generación dorada"
+        kicker="Players"
+        title="Famous Spanish Football Players"
+        subtitle="The stars of the golden generation"
         student={student.name}
         image="jugadores"
       />
@@ -22,7 +23,7 @@ export default function Jugadores() {
       <section className="section section-light">
         <div className="container narrow prose">
           {jugadores.intro.map((p) => (
-            <p key={p} className="lead-paragraph">{p}</p>
+            <p key={p} className="lead-paragraph">{highlightSpanish(p, jugadores.vocab)}</p>
           ))}
         </div>
       </section>
@@ -30,13 +31,13 @@ export default function Jugadores() {
       <section className="section section-offwhite">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Fichas</p>
-            <h2 className="section-title">Cinco leyendas</h2>
-            <p className="section-lead">Cada ficha separa la carrera en clubes y la carrera con la selección.</p>
+            <p className="eyebrow">Player cards</p>
+            <h2 className="section-title">Five legends</h2>
+            <p className="section-lead">Each card shows the club career and the national team career.</p>
           </div>
           <div className="player-grid">
             {jugadores.players.map((p) => (
-              <PlayerCard key={p.id} player={p} />
+              <PlayerCard key={p.id} player={p} words={jugadores.vocab} />
             ))}
           </div>
         </div>
@@ -44,10 +45,10 @@ export default function Jugadores() {
 
       <section className="section section-dark">
         <div className="container narrow">
-          <p className="eyebrow eyebrow-light">Juego</p>
-          <h2 className="section-title">¿Quién es el jugador?</h2>
+          <p className="eyebrow eyebrow-light">Game</p>
+          <h2 className="section-title">Who is the player?</h2>
           <p className="section-lead section-lead-light">
-            Lee las pistas, descubre más si lo necesitas y elige al jugador correcto.
+            Read the clues, show more if you need them, and pick the right player.
           </p>
           <GuessPlayer rounds={jugadores.guessRounds} players={jugadores.players} />
         </div>
@@ -55,7 +56,7 @@ export default function Jugadores() {
 
       <section className="section section-offwhite" id="vocabulario">
         <div className="container">
-          <VocabTool vocab={jugadores.vocab} details={jugadores.vocabDetails} author="Aayush" />
+          <VocabTool vocab={jugadores.vocab} details={jugadores.vocabDetails} source={jugadores} author="Aayush" />
         </div>
       </section>
       <ReflectionSection student={student.name} reflection={student.reflection} />

@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { highlightSpanish } from './SpanishText.jsx';
 
 // "Un día de partido": click each stage to read its description.
-export default function MatchDayJourney({ stages }) {
+export default function MatchDayJourney({ stages, words = [] }) {
   const [active, setActive] = useState(0);
   const stage = stages[active];
 
   return (
     <div className="journey">
-      <div className="journey-steps" role="tablist" aria-label="Etapas de un día de partido">
+      <div className="journey-steps" role="tablist" aria-label="Stages of a match day">
         {stages.map((s, i) => (
           <button
             key={s.step}
@@ -27,12 +28,12 @@ export default function MatchDayJourney({ stages }) {
       </div>
 
       <div id="etapa-panel" role="tabpanel" aria-labelledby={`etapa-tab-${active}`} className="journey-panel">
-        <p className="journey-panel-kicker">Etapa {stage.step} · {stage.time}</p>
+        <p className="journey-panel-kicker">Stage {stage.step} · {stage.time}</p>
         <h3 className="journey-panel-title">{stage.title}</h3>
-        <p className="journey-panel-text">{stage.text}</p>
+        <p className="journey-panel-text">{highlightSpanish(stage.text, words)}</p>
         <div className="journey-nav">
           <button type="button" className="btn btn-ghost-light" disabled={active === 0} onClick={() => setActive(active - 1)}>
-            Anterior
+            Back
           </button>
           <button
             type="button"
@@ -40,7 +41,7 @@ export default function MatchDayJourney({ stages }) {
             disabled={active === stages.length - 1}
             onClick={() => setActive(active + 1)}
           >
-            Siguiente etapa
+            Next stage
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Volume2, BookOpen, Check, Search } from 'lucide-react';
 import './VocabTool.css';
+import { highlightSpanish } from './SpanishText.jsx';
 
 // Interactive vocabulary explorer: click a word to hear it (es-ES) and see
 // an example sentence taken from the section text plus a simple meaning.
@@ -8,7 +9,26 @@ import './VocabTool.css';
 //   vocab   – array of [spanish, english]
 //   details – { [spanish]: { ex: 'sentence from the page', hint: 'simple meaning' } }
 //   author  – first name shown in the badge
-export default function VocabTool({ vocab, details = {}, author }) {
+// Collect every string in a section's data (except the vocab/quiz) so the
+// example sentence for each word always comes from the real page text.
+function collectText(source) {
+  const out = [];
+  (function walk(o, key) {
+    if (['vocab', 'vocabDetails', 'quiz'].includes(key)) return;
+    if (typeof o === 'string') out.push(o);
+    else if (o && typeof o === 'object') Object.entries(o).forEach(([k, v]) => walk(v, k));
+  })(source);
+  return out.flatMap((t) => t.split(/(?<=[.!?])\s+/));
+}
+
+function findExample(word, sentences) {
+  const re = new RegExp(`(?<![\\p{L}])${word}(?![\\p{L}])`, 'iu');
+  const hits = sentences.filter((s) => re.test(s)).sort((x, y) => x.length - y.length);
+  return hits[0];
+}
+
+export default function VocabTool({ vocab, details = {}, author, source }) {
+  const sentences = source ? collectText(source) : [];
   const [query, setQuery] = useState('');
   const [selectedWord, setSelectedWord] = useState(vocab[0] ? vocab[0][0] : null);
 
@@ -30,9 +50,11 @@ export default function VocabTool({ vocab, details = {}, author }) {
     return !q || es.toLowerCase().includes(q) || en.toLowerCase().includes(q);
   });
 
-  const activeData = details[selectedWord] || {
-    ex: `Usamos «${selectedWord}» en el texto de esta sección.`,
-    hint: 'Palabra importante del vocabulario de nivel principiante.',
+  const found = findExample(selectedWord, sentences);
+  const activeData = { ...(details[selectedWord] || {}), ...(found ? { ex: found } : {}) };
+  const fallback = {
+    ex: `We use «${selectedWord}» in this section.`,
+    hint: 'A key beginner vocabulary word.',
   };
 
   const activeEntry = vocab.find(([es]) => es === selectedWord) || [selectedWord, ''];
@@ -41,13 +63,13 @@ export default function VocabTool({ vocab, details = {}, author }) {
     <div className="vocab-tool">
       <div className="vocab-tool-header">
         <div>
-          <span className="vocab-tool-pill">Nivel Principiante (A1/A2)</span>
+          <span className="vocab-tool-pill">Beginner level (A1/A2)</span>
           <h3 className="vocab-tool-title">
-            <BookOpen size={20} className="gold-icon" /> Mi Diccionario de Fútbol ({vocab.length} Palabras Clave)
+            <BookOpen size={20} className="gold-icon" /> My Football Dictionary ({vocab.length} Spanish words)
           </h3>
           <p className="vocab-tool-lead">
-            He incluido estas {vocab.length} palabras de forma natural en mi investigación. Haz clic en cualquier
-            palabra para escuchar su pronunciación y ver un ejemplo sencillo.
+            I used these {vocab.length} Spanish words in my section. Tap any word to hear how it sounds in
+            Spanish and see where I used it.
           </p>
         </div>
 
@@ -56,7 +78,7 @@ export default function VocabTool({ vocab, details = {}, author }) {
           <input
             type="text"
             className="vocab-search-input"
-            placeholder="Buscar palabra..."
+            placeholder="Search a word..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -80,7 +102,7 @@ export default function VocabTool({ vocab, details = {}, author }) {
             </button>
           ))}
           {filtered.length === 0 && (
-            <p className="no-vocab-found">No se encontraron palabras con esa búsqueda.</p>
+            <p className="no-vocab-found">No words match that search.</p>
           )}
         </div>
 
@@ -88,33 +110,33 @@ export default function VocabTool({ vocab, details = {}, author }) {
           <div className="vocab-spotlight-card">
             <div className="spotlight-top">
               <div>
-                <span className="spotlight-num">Palabra #{vocab.findIndex(([w]) => w === selectedWord) + 1}</span>
+                <span className="spotlight-num">Word #{vocab.findIndex(([w]) => w === selectedWord) + 1}</span>
                 <h4 className="spotlight-word">{selectedWord}</h4>
-                <p className="spotlight-trans">Inglés: <strong>{activeEntry[1]}</strong></p>
+                <p className="spotlight-trans">English: <strong>{activeEntry[1]}</strong></p>
               </div>
               <button
                 type="button"
                 className="btn btn-audio"
                 onClick={() => speakWord(selectedWord)}
-                title="Escuchar pronunciación en español"
+                title="Hear it in Spanish"
               >
-                <Volume2 size={18} /> Escuchar
+                <Volume2 size={18} /> Listen
               </button>
             </div>
 
             <div className="spotlight-example">
-              <span className="example-label">Ejemplo en mi texto:</span>
-              <p className="example-text">«{activeData.ex}»</p>
+              <span className="example-label">Example from my text:</span>
+              <p className="example-text">{highlightSpanish(activeData.ex || fallback.ex, vocab)}</p>
             </div>
 
             <div className="spotlight-hint">
-              <span className="hint-label">Significado simple:</span>
-              <p className="hint-text">{activeData.hint}</p>
+              <span className="hint-label">Simple meaning:</span>
+              <p className="hint-text">{activeData.hint || fallback.hint}</p>
             </div>
 
             {author && (
               <div className="spotlight-badge">
-                <Check size={14} /> Usada naturalmente en el proyecto de {author}
+                <Check size={14} /> Used in {author}'s section
               </div>
             )}
           </div>

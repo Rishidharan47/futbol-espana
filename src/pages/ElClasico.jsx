@@ -5,6 +5,7 @@ import VocabTool from '../components/VocabTool.jsx';
 import ReflectionSection from '../components/ReflectionSection.jsx';
 import { clasico } from '../data/clasico.js';
 import { team } from '../data/team.js';
+import { highlightSpanish } from '../components/SpanishText.jsx';
 
 const reasonIcons = [Star, Compass, History, Globe];
 
@@ -13,11 +14,11 @@ export default function ElClasico() {
   const [madrid, barca] = clasico.teams;
 
   const rows = [
-    ['Colores', 'colors'],
-    ['Ciudad', 'city'],
-    ['Estadio', 'stadium'],
-    ['Apodo', 'nickname'],
-    ['Identidad', 'identity'],
+    ['Colours', 'colors'],
+    ['City', 'city'],
+    ['Stadium', 'stadium'],
+    ['Nickname', 'nickname'],
+    ['Identity', 'identity'],
   ];
 
   return (
@@ -25,8 +26,8 @@ export default function ElClasico() {
       <PageHeader
         number="03"
         kicker="El Clásico"
-        title="El Clásico: Real Madrid contra FC Barcelona"
-        subtitle="El partido que detiene a un país"
+        title="El Clásico: Real Madrid vs FC Barcelona"
+        subtitle="The match that stops a whole country"
         student={student.name}
         image="clasico"
       />
@@ -34,7 +35,7 @@ export default function ElClasico() {
       <section className="section section-light">
         <div className="container narrow prose">
           {clasico.intro.map((p) => (
-            <p key={p} className="lead-paragraph">{p}</p>
+            <p key={p} className="lead-paragraph">{highlightSpanish(p, clasico.vocab)}</p>
           ))}
         </div>
       </section>
@@ -42,8 +43,8 @@ export default function ElClasico() {
       <section className="section section-offwhite">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Cara a cara</p>
-            <h2 className="section-title">Dos clubes, dos identidades</h2>
+            <p className="eyebrow">Face to face</p>
+            <h2 className="section-title">Two clubs, two identities</h2>
           </div>
           <div className="versus">
             {[madrid, barca].map((t) => (
@@ -54,7 +55,7 @@ export default function ElClasico() {
                   {rows.map(([label, key]) => (
                     <div key={key}>
                       <dt>{label}</dt>
-                      <dd>{t[key]}</dd>
+                      <dd>{highlightSpanish(t[key], clasico.vocab)}</dd>
                     </div>
                   ))}
                 </dl>
@@ -68,8 +69,8 @@ export default function ElClasico() {
       <section className="section section-light">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Un fenómeno global</p>
-            <h2 className="section-title">¿Por qué lo ve todo el mundo?</h2>
+            <p className="eyebrow">A global event</p>
+            <h2 className="section-title">Why does the whole world watch?</h2>
           </div>
           <div className="reason-grid">
             {clasico.reasons.map((r, i) => {
@@ -78,7 +79,7 @@ export default function ElClasico() {
                 <article key={r.title} className="reason">
                   <Icon size={24} aria-hidden="true" className="reason-icon" />
                   <h3>{r.title}</h3>
-                  <p>{r.text}</p>
+                  <p>{highlightSpanish(r.text, clasico.vocab)}</p>
                 </article>
               );
             })}
@@ -89,20 +90,20 @@ export default function ElClasico() {
       <section className="section section-dark">
         <div className="container two-col">
           <div>
-            <p className="eyebrow eyebrow-light">Sociedad</p>
-            <h2 className="section-title">Una rivalidad dentro y fuera del campo</h2>
+            <p className="eyebrow eyebrow-light">Society</p>
+            <h2 className="section-title">A rivalry on and off the pitch</h2>
             <div className="prose prose-light">
               {clasico.rivalry.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>{highlightSpanish(p, clasico.vocab)}</p>
               ))}
             </div>
           </div>
           <div className="moments">
-            <h3 className="moments-title">Momentos de respeto</h3>
+            <h3 className="moments-title">Moments of respect</h3>
             {clasico.moments.map((m) => (
               <article key={m.date} className="moment">
                 <p className="moment-date">{m.date}</p>
-                <p>{m.text}</p>
+                <p>{highlightSpanish(m.text, clasico.vocab)}</p>
               </article>
             ))}
           </div>
@@ -111,13 +112,13 @@ export default function ElClasico() {
 
       <section className="section section-light">
         <div className="container narrow">
-          <Quiz title="Quiz de El Clásico" questions={clasico.quiz} />
+          <Quiz title="El Clásico Quiz" questions={clasico.quiz} />
         </div>
       </section>
 
       <section className="section section-offwhite" id="vocabulario">
         <div className="container">
-          <VocabTool vocab={clasico.vocab} details={clasico.vocabDetails} author="Rishidharan" />
+          <VocabTool vocab={clasico.vocab} details={clasico.vocabDetails} source={clasico} author="Rishidharan" />
         </div>
       </section>
       <ReflectionSection student={student.name} reflection={student.reflection} />

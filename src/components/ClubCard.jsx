@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { MapPin, Landmark, CalendarDays, Plus, Minus } from 'lucide-react';
 import Badge from './Badge.jsx';
+import { highlightSpanish } from './SpanishText.jsx';
 
-export default function ClubCard({ club }) {
+export default function ClubCard({ club, words = [] }) {
   const [open, setOpen] = useState(false);
   const detailsId = `club-${club.id}-mas`;
 
@@ -16,16 +17,16 @@ export default function ClubCard({ club }) {
         <ul className="meta-list">
           <li><Landmark size={16} aria-hidden="true" /> {club.stadium}</li>
           <li><MapPin size={16} aria-hidden="true" /> {club.city}</li>
-          <li><CalendarDays size={16} aria-hidden="true" /> Fundado en {club.founded}</li>
+          <li><CalendarDays size={16} aria-hidden="true" /> Founded in {club.founded}</li>
         </ul>
-        <p className="club-desc">{club.description}</p>
+        <p className="club-desc">{highlightSpanish(club.description, words)}</p>
 
         {open && (
           <div id={detailsId} className="club-more">
-            <p className="club-more-label">Colores: <strong>{club.clubColors}</strong></p>
+            <p className="club-more-label">Colours: <strong>{club.clubColors}</strong></p>
             <ul>
               {club.more.map((m) => (
-                <li key={m}>{m}</li>
+                <li key={m}>{highlightSpanish(m, words)}</li>
               ))}
             </ul>
           </div>
@@ -39,7 +40,7 @@ export default function ClubCard({ club }) {
           onClick={() => setOpen((o) => !o)}
         >
           {open ? <Minus size={16} aria-hidden="true" /> : <Plus size={16} aria-hidden="true" />}
-          {open ? 'Mostrar menos' : 'Saber más'}
+          {open ? 'Show less' : 'Learn more'}
         </button>
       </div>
     </article>

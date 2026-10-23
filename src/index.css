@@ -1096,3 +1096,18 @@ main:focus { outline: none; }
   .hero-stats > div { padding: var(--space-3) var(--space-4); }
   .hero-stats strong { font-size: 28px; }
 }
+
+/* Spanish vocabulary words inside English text */
+.es-word {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--red);
+  background: rgba(229, 184, 92, 0.18);
+  padding: 0 3px;
+  border-radius: 4px;
+}
+.prose-light .es-word,
+.section-dark .es-word {
+  color: var(--gold);
+  background: rgba(229, 184, 92, 0.12);
+}

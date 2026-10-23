@@ -3,9 +3,9 @@ import { Check, X, RotateCcw, ArrowRight, Trophy } from 'lucide-react';
 
 function finalMessage(score, total) {
   const ratio = score / total;
-  if (ratio === 1) return '¡Perfecto! Eres todo un experto.';
-  if (ratio >= 0.6) return '¡Muy bien! Conoces bastante el tema.';
-  return '¡Buen intento! Repasa la página y vuelve a probar.';
+  if (ratio === 1) return 'Perfect! You are a real expert.';
+  if (ratio >= 0.6) return 'Very good! You know this topic well.';
+  return 'Good try! Read the page again and try once more.';
 }
 
 export default function Quiz({ title, questions }) {
@@ -44,7 +44,7 @@ export default function Quiz({ title, questions }) {
       <div className="quiz-header">
         <h3 className="quiz-title">{title}</h3>
         <p className="quiz-score" aria-live="polite">
-          Puntos: <strong>{score}</strong> / {questions.length}
+          Score: <strong>{score}</strong> / {questions.length}
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export default function Quiz({ title, questions }) {
           </p>
           <p>{finalMessage(score, questions.length)}</p>
           <button type="button" className="btn btn-primary" onClick={restart}>
-            <RotateCcw size={18} aria-hidden="true" /> Volver a empezar
+            <RotateCcw size={18} aria-hidden="true" /> Start again
           </button>
         </div>
       ) : (
@@ -65,7 +65,7 @@ export default function Quiz({ title, questions }) {
             <span style={{ width: `${((index + (answered ? 1 : 0)) / questions.length) * 100}%` }} />
           </div>
           <p className="quiz-count">
-            Pregunta {index + 1} de {questions.length}
+            Question {index + 1} of {questions.length}
           </p>
           <p className="quiz-question">{q.question}</p>
           <div className="quiz-options">
@@ -92,16 +92,16 @@ export default function Quiz({ title, questions }) {
 
           {answered && (
             <div className={`quiz-feedback ${selected === q.answer ? 'good' : 'bad'}`} role="status">
-              <strong>{selected === q.answer ? '¡Correcto!' : 'Incorrecto.'}</strong> {q.explanation}
+              <strong>{selected === q.answer ? 'Correct!' : 'Not quite.'}</strong> {q.explanation}
             </div>
           )}
 
           <div className="quiz-actions">
             <button type="button" className="btn btn-ghost" onClick={restart}>
-              <RotateCcw size={16} aria-hidden="true" /> Reiniciar
+              <RotateCcw size={16} aria-hidden="true" /> Restart
             </button>
             <button type="button" className="btn btn-primary" onClick={next} disabled={!answered}>
-              {index + 1 < questions.length ? 'Siguiente' : 'Ver resultado'} <ArrowRight size={16} aria-hidden="true" />
+              {index + 1 < questions.length ? 'Next' : 'See result'} <ArrowRight size={16} aria-hidden="true" />
             </button>
           </div>
         </>

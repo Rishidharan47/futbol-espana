@@ -14,7 +14,7 @@ export default function PageHeader({ number, kicker, title, subtitle, student, i
         {subtitle && <p className="page-subtitle">{subtitle}</p>}
         <p className="student-chip">
           <UserRound size={16} aria-hidden="true" />
-          <span>Responsable de la sección:</span> <strong>{student}</strong>
+          <span>Section by:</span> <strong>{student}</strong>
         </p>
       </div>
     </section>

@@ -43,9 +43,9 @@ export default function GuessPlayer({ rounds, players }) {
         <div className="quiz-result">
           <HelpCircle size={40} aria-hidden="true" />
           <p className="quiz-result-score">{score} / {rounds.length}</p>
-          <p>{score === rounds.length ? '¡Los has reconocido a todos!' : '¡Bien jugado! Lee otra vez las fichas y vuelve a intentarlo.'}</p>
+          <p>{score === rounds.length ? 'You got them all!' : 'Well played! Read the player cards again and try once more.'}</p>
           <button type="button" className="btn btn-primary" onClick={restart}>
-            <RotateCcw size={18} aria-hidden="true" /> Jugar otra vez
+            <RotateCcw size={18} aria-hidden="true" /> Play again
           </button>
         </div>
       </div>
@@ -55,14 +55,14 @@ export default function GuessPlayer({ rounds, players }) {
   return (
     <div className="guess">
       <div className="quiz-header">
-        <p className="quiz-count">Ronda {round + 1} de {rounds.length}</p>
-        <p className="quiz-score" aria-live="polite">Aciertos: <strong>{score}</strong></p>
+        <p className="quiz-count">Round {round + 1} of {rounds.length}</p>
+        <p className="quiz-score" aria-live="polite">Correct: <strong>{score}</strong></p>
       </div>
 
       <ol className="clues">
         {r.clues.map((c, i) => (
           <li key={c} className={`clue ${i < shown ? 'is-shown' : ''}`}>
-            <span className="clue-num">Pista {i + 1}</span>
+            <span className="clue-num">Clue {i + 1}</span>
             <span className="clue-text">{i < shown ? c : '???'}</span>
           </li>
         ))}
@@ -70,11 +70,11 @@ export default function GuessPlayer({ rounds, players }) {
 
       {!guess && shown < r.clues.length && (
         <button type="button" className="btn btn-ghost" onClick={() => setShown((s) => s + 1)}>
-          <Eye size={16} aria-hidden="true" /> Mostrar otra pista
+          <Eye size={16} aria-hidden="true" /> Show another clue
         </button>
       )}
 
-      <p className="guess-label">¿Quién es?</p>
+      <p className="guess-label">Who is it?</p>
       <div className="guess-options">
         {players.map((p) => {
           let state = '';
@@ -96,9 +96,9 @@ export default function GuessPlayer({ rounds, players }) {
 
       {guess && (
         <div className={`quiz-feedback ${correct ? 'good' : 'bad'}`} role="status">
-          <strong>{correct ? '¡Correcto!' : 'No es correcto.'}</strong> El jugador es {answer.name}.
+          <strong>{correct ? 'Correct!' : 'Not quite.'}</strong> The player is {answer.name}.
           <button type="button" className="btn btn-primary btn-small" onClick={next}>
-            {round + 1 < rounds.length ? 'Siguiente ronda' : 'Ver resultado'} <ArrowRight size={16} aria-hidden="true" />
+            {round + 1 < rounds.length ? 'Next round' : 'See result'} <ArrowRight size={16} aria-hidden="true" />
           </button>
         </div>
       )}
