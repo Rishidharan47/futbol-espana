@@ -1,0 +1,142 @@
+/* ============================================================
+   Scroll progress bar with rolling football
+   ============================================================ */
+.scroll-ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 60;
+  pointer-events: none;
+}
+.scroll-ball-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  box-shadow: 0 0 8px rgba(229, 184, 92, 0.6);
+}
+.scroll-ball-ball {
+  position: absolute;
+  top: 14px;
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+  will-change: transform, left;
+}
+
+/* ============================================================
+   Intro loader
+   ============================================================ */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 16px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(229, 184, 92, 0.1), transparent 45%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 2px, transparent 2px 6px),
+    var(--navy);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.loader.is-hiding {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader-eyebrow {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: loader-fade-up 0.6s ease 0.1s forwards;
+}
+.loader-ball-wrap {
+  position: relative;
+  height: 110px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+}
+.loader-ball {
+  display: block;
+  width: 56px;
+  height: 56px;
+  font-size: 52px;
+  line-height: 56px;
+  text-align: center;
+  filter: drop-shadow(0 0 18px rgba(229, 184, 92, 0.45));
+  animation: loader-bounce 0.8s cubic-bezier(0.3, 0, 0.7, 1) infinite alternate;
+}
+.loader-shadow {
+  position: absolute;
+  bottom: 0;
+  width: 46px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: loader-shadow 0.8s cubic-bezier(0.3, 0, 0.7, 1) infinite alternate;
+}
+.loader-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 8vw, 3.6rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  animation: loader-title-in 0.45s ease both;
+}
+.loader-track {
+  width: min(260px, 70vw);
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.loader-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  animation: loader-fill linear forwards;
+}
+
+@keyframes loader-bounce {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(44px) rotate(200deg); }
+}
+@keyframes loader-shadow {
+  from { transform: scale(0.55); opacity: 0.35; }
+  to { transform: scale(1); opacity: 0.8; }
+}
+@keyframes loader-title-in {
+  from { opacity: 0; transform: translateY(14px); letter-spacing: 0.2em; }
+  to { opacity: 1; transform: translateY(0); letter-spacing: 0.04em; }
+}
+@keyframes loader-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes loader-fill {
+  to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-ball,
+  .loader-shadow,
+  .loader-title,
+  .loader-eyebrow {
+    animation: none;
+    opacity: 1;
+  }
+  .scroll-ball-ball {
+    transform: translate(-50%, -50%) !important;
+  }
+}
